@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sanjana Ramachandran</title>
+  <link rel="icon" href="avatar.jpg" type="image/jpeg">
+  <meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --teal:   #67bdb0;
+  --pink:   #d13b51;
+  --yellow: #d3df77;
+  --rule:   #e8e8e8;
+  --muted:  #999;
+  --dark-muted: #343232;
+}
+html { font-size: 16px; }
+body { background: #fff; color: #111; font-family: 'Inter', sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.page { max-width: 700px; margin: 0 auto; padding: 52px 28px 100px; }
+
+
+/* Name */
+h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.8px; line-height: 1.1; margin-bottom: 5px; }
+.handle { font-size: 14px; color: #222; font-weight: 700; margin-bottom: 0; letter-spacing: -0.2px; }
+
+/* header with avatar */
+.profile-header { display: flex; align-items: center; margin-bottom: 22px; }
+.avatar { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; margin-right: 12px; flex-shrink: 0; border: 2px solid var(--pink) }
+
+.quote { background: var(--pink); padding: 14px 18px; margin: 18px 0 22px; border-radius: 2px; font-size: 14px; color: #fff; font-style: normal; font-weight: 600; line-height: 1.5; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.quote cite { display: inline; font-style: normal; font-size: 13px; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; white-space: nowrap; }
+
+/* Bio */
+.bio { font-size: 14px; color: #333; line-height: 1.75; font-weight: 500; margin-bottom: 16px; }
+
+/* Tags */
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 36px; }
+.tag { font-size: 11.5px; font-weight: 500; color: #555; border: 1px solid var(--rule); border-radius: 2px; padding: 3px 8px; }
+
+/* Section heading */
+.sh { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #111; margin-bottom: 12px; }
+.section { margin-bottom: 36px; }
+
+/* Book card — pink bg, teal/white text */
+.book { background: var(--teal); border-radius: 3px; padding: 22px 22px 24px; margin-bottom: 36px; position: relative; overflow: hidden; }
+.book::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,.12) 0%, transparent 70%); pointer-events: none; }
+.book::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--pink), rgba(255,255,255,.3)); }
+.book-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+.book-title { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; color: #111; margin-bottom: 8px; line-height: 1.2; }
+.book-desc { font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.8); font-weight: 700; margin-bottom: 16px; }
+.book-btn { display: inline-block; background: var(--pink); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; padding: 9px 16px; border-radius: 2px; transition: opacity .15s; }
+.book-btn:hover { opacity: .85; }
+
+/* Link rows */
+.link-row { display: flex; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--rule); gap: 12px; transition: color .12s; }
+.link-row:first-child { border-top: 1px solid var(--rule); }
+.link-row:hover { color: var(--teal); }
+.link-row:hover .lr-arrow { opacity: 1; }
+.lr-platform { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); min-width: 80px; flex-shrink: 0; transition: color .12s; }
+.link-row:hover .lr-platform { color: var(--teal); }
+.lr-desc { flex: 1; font-size: 14px; color: #222; transition: color .12s; }
+.link-row:hover .lr-desc { color: var(--teal); }
+.lr-arrow { font-size: 14px; color: var(--muted); opacity: 0.25; transition: opacity .12s; flex-shrink: 0; }
+
+/* Pubs */
+.pubs { font-size: 14px; color: #444; line-height: 2.1; }
+.pubs a { border-bottom: 1px solid var(--rule); padding-bottom: 1px; transition: color .12s, border-color .12s; }
+.pub-name { color: #444; }
+.pubs a:hover { color: var(--teal); border-color: var(--teal); }
+
+.pubs .sep { color: #ccc; margin: 0 5px; }
+
+/* Built */
+.build-row { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--rule); align-items: flex-start; }
+.build-row:first-child { border-top: 1px solid var(--rule); }
+.build-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+.build-role { font-size: 14px; font-weight: 500; margin-bottom: 1px; }
+.build-sub { font-size: 12px; color: var(--muted); }
+
+/* Footer */
+footer { margin-top: 40px; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.footer-name { font-size: 12px; font-weight: 700; color: var(--dark-muted); }
+.footer-links { display: flex; gap: 16px; }
+.footer-links a { font-size: 12px; color: var(--dark-muted); transition: color .12s; }
+.footer-links a:hover { color: #999; }
+
+@media (max-width: 460px) { .page { padding: 36px 18px 100px; } h1 { font-size: 26px; } }
+</style>
+</head>
+<body>
+
+<!-- edit popup removed for production -->
+<div class="page">
+
+  <div class="profile-header">
+    <img src="avatar.jpg" alt="" class="avatar">
+    <div>
+      <h1>Sanjana Ramachandran</h1>
+      <a class="handle" href="https://www.linkedin.com/in/ramachandranesk" target="_blank" rel="noopener">@ramachandranesk</a>
+    </div>
+  </div>
+
+
+  <P><blockquote class="quote">
+    <span>&ldquo;Deeply introspective and hugely funny&rdquo;</span>
+    <cite>&mdash; Shashi Tharoor</cite>
+  </blockquote></P>
+
+  <p class="bio">writer-scientist-builder-player-observer • working at the intersection of culture, code, and commerce • my journey is proof these aren&rsquo;t that different</p>
+
+  <div class="tags">
+    <span class="tag">BITS Pilani</span>
+    <span class="tag">IIM Calcutta</span>
+    <span class="tag">P&amp;G</span>
+    <span class="tag">Amazon</span>
+    <span class="tag">The Ken</span>
+    <span class="tag">Atlan</span>
+    <span class="tag">Ema</span>
+  </div>
+
+  <div class="book">
+    <div class="book-eyebrow">Book &middot; Aleph Book Company &middot; 2025</div>
+    <div class="book-title">Famous Last Questions</div>
+    <p class="book-desc">What have the last 30 years done to the Indian psyche? A coming-of-age story of the &rsquo;90s-born Indian elite&mdash;through family dysfunction and trauma, hyper-connectivity, manic nationalism, and the perils of too many influences on the self.</p>
+    <a class="book-btn" href="https://amzn.to/3DGu0y1" target="_blank" rel="noopener">Buy on Amazon &rarr;</a>
+  </div>
+
+  <div class="section">
+    <div class="sh">Essays in</div>
+    <div class="pubs">
+      <a href="https://caravanmagazine.in/business/rajat-guptas-appeal-court-public-opinion#" target="_blank" rel="noopener">The Caravan</a>
+      <span class="sep">&middot;</span>
+      <a href="https://theprint.in/author/sanjana-ramachandran/" target="_blank" rel="noopener">The Print</a>
+      <span class="sep">&middot;</span>
+      <a href="https://www.vice.com/en/contributor/sanjana-ramachandran/" target="_blank" rel="noopener">VICE</a>
+      <span class="sep">&middot;</span>
+      <a href="https://fiftytwo.in/contributor/sanjana-ramachandran/" target="_blank" rel="noopener">Fifty Two</a>
+      <span class="sep">&middot;</span>
+      <a href="https://restofworld.org/author/sanjana-ramachandran/" target="_blank" rel="noopener">Rest of World</a>
+      <span class="sep">&middot;</span>
+      <a href="https://www.ndtv.com/author/sanjana-ramachandran" target="_blank" rel="noopener">NDTV</a>
+      <span class="sep">&middot;</span>
+      <a href="https://newlinesmag.com/review/class-shows-elite-indians-confronting-their-privilege-or-failing-to/" target="_blank" rel="noopener">New Lines Magazine</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sh">MEDIA FEATURES</div>
+    <div class="pubs">
+      <a href="https://seenunseen.in/episodes/2024/9/30/episode-401-finding-love-in-modern-india/" target="_blank" rel="noopener">The Seen and the Unseen</a>
+      <span class="sep">&middot;</span>
+      <a href="https://www.youtube.com/watch?v=9kOg5sYAeHY&t=244s" target="_blank" rel="noopener">Soch</a>
+      <span class="sep">&middot;</span>
+      <a href="https://www.platform-mag.com/literature/sanjana-ramachandran.html" target="_blank" rel="noopener">Platform Mag</a>
+      <span class="sep">&middot;</span>
+      <a href="https://scroll.in/article/1084058/famous-last-questions-memoir-cum-reportage-that-finally-takes-the-millennial-mess-seriously" target="_blank" rel="noopener">Scroll</a>
+      <span class="sep">&middot;</span>
+      <a href="https://timesofindia.indiatimes.com/india/too-young-for-a-memoir-not-anymore/articleshow/127443397.cms" target="_blank" rel="noopener">Times of India</a>
+      <span class="sep">&middot;</span>
+      <a href="https://www.telegraphindia.com/books/voices-of-a-time-famous-last-questions-a-confused-womans-investigations-into-the-country-that-shaped-her-by-sanjana-ramachandran-prnt/cid/2101285" target="_blank" rel="noopener">The Telegraph</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sh">Find me</div>
+    <a class="link-row" href="https://ramachandranesk.substack.com" target="_blank" rel="noopener">
+      <span class="lr-platform">Substack</span>
+      <span class="lr-desc">short essays on modern dilemmas</span>
+      <span class="lr-arrow">&rarr;</span>
+    </a>
+    <a class="link-row" href="https://x.com/ramachandranesk" target="_blank" rel="noopener">
+      <span class="lr-platform">Twitter</span>
+      <span class="lr-desc">mad as hell and usually writing about it</span>
+      <span class="lr-arrow">&rarr;</span>
+    </a>
+    <a class="link-row" href="https://linkedin.com/in/ramachandranesk" target="_blank" rel="noopener">
+      <span class="lr-platform">LinkedIn</span>
+      <span class="lr-desc">writing, marketing, and what I&rsquo;m building</span>
+      <span class="lr-arrow">&rarr;</span>
+    </a>
+    <a class="link-row" href="https://instagram.com/ramachandranesk" target="_blank" rel="noopener">
+      <span class="lr-platform">Instagram</span>
+      <span class="lr-desc">making my life look better than it is</span>
+      <span class="lr-arrow">&rarr;</span>
+    </a>
+    <a class="link-row" href="https://ramachandranesk.in" target="_blank" rel="noopener">
+      <span class="lr-platform">Website</span>
+      <span class="lr-desc">long-form writings and archive</span>
+      <span class="lr-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <div class="section">
+    <div class="sh">Inspired by</div>
+    <div class="pubs">
+      <span>Jia Tolentino</span>
+      <span class="sep">&middot;</span>
+      <span>Tom Wolfe</span>
+      <span class="sep">&middot;</span>
+      <span>Kafka</span>
+      <span class="sep">&middot;</span>
+      <span>DFW</span>
+      <span class="sep">&middot;</span>
+      <span>A24</span>
+      <span class="sep">&middot;</span>
+      <span>Dali</span>
+      <span class="sep">&middot;</span>
+      <span>Feynman</span>
+      <span class="sep">&middot;</span>
+      <span>Plath</span>
+      <span class="sep">&middot;</span>
+      <span>Phil Ivey</span>
+      <span class="sep">&middot;</span>
+      <span>Marie Curie</span>
+      <span class="sep">&middot;</span>
+      <span>Botez Sisters</span>
+      <span class="sep">&middot;</span>
+      <span>UR Ananthamurthy</span>
+      <span class="sep">&middot;</span>
+      <span>School of Life</span>
+      <span class="sep">&middot;</span>
+      <span>Carl Jung</span>
+      <span class="sep">&middot;</span>
+      <span>Buddha</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sh">Built</div>
+    <div class="build-row">
+      <div class="build-dot" style="background:var(--teal)"></div>
+      <div>
+        <div class="build-role">Content Studio &mdash; the all-in-one personal brand builder</div>
+        <div class="build-sub">Creator tool &middot; 2026</div>
+      </div>
+    </div>
+    <div class="build-row">
+      <div class="build-dot" style="background:var(--yellow)"></div>
+      <div>
+        <div class="build-role">Head of Brand Marketing, Ema &mdash; Universal AI Employee</div>
+        <div class="build-sub">Series A &middot; 2024&ndash;present</div>
+      </div>
+    </div>
+    <div class="build-row">
+      <div class="build-dot" style="background:var(--pink)"></div>
+      <div>
+        <div class="build-role">Growth &amp; Brand, Atlan &mdash; data catalog</div>
+        <div class="build-sub">1&rarr;10 brand build &middot; scaled to category leader</div>
+      </div>
+    </div>
+    <div class="build-row">
+      <div class="build-dot" style="background:var(--teal)"></div>
+      <div>
+        <div class="build-role">Marketing Manager, The Ken &mdash; subscription journalism</div>
+        <div class="build-sub">Helped build India&rsquo;s first paid biz journalism brand</div>
+      </div>
+    </div>
+    <div class="build-row">
+      <div class="build-dot" style="background:#ccc"></div>
+      <div>
+        <div class="build-role">Senior Brand Manager, P&amp;G &mdash; Tide & Ariel</div>
+        <div class="build-sub">Sold essentials to &gt;99% of India</div>
+      </div>
+    </div>
+
+    <div class="build-row">
+      <div class="build-dot" style="background:#333"></div>
+      <div>
+        <div class="build-role">SDE, Amazon</div>
+        <div class="build-sub">Built automation to flag &lsquo;bad&rsquo; ads</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-name" data-edit="true" contenteditable="false">Sanjana Ramachandran</span>
+    <div class="footer-links">
+      <a href="https://ramachandranesk.in" target="_blank" rel="noopener" data-link="true" data-link-label="website">website</a>
+      <a href="https://x.com/ramachandranesk" target="_blank" rel="noopener" data-link="true" data-link-label="twitter">twitter</a>
+      <a href="https://linkedin.com/in/ramachandranesk" target="_blank" rel="noopener" data-link="true" data-link-label="linkedin">linkedin</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+var editing = false;
+var currentLinkEl = null;
+
+function toggleEdit() {
+  editing = !editing;
+  document.body.classList.toggle('editing', editing);
+  document.getElementById('edit-bar').classList.toggle('visible', editing);
+  var btn = document.getElementById('toggle-edit');
+  btn.classList.toggle('active', editing);
+  btn.textContent = editing ? '\u2713 Done' : '\u270e Edit';
+
+  document.querySelectorAll('[data-edit="true"]').forEach(function(el) {
+    el.contentEditable = editing ? 'true' : 'false';
+  });
+
+  document.querySelectorAll('a[data-link="true"]').forEach(function(el) {
+    if (editing) {
+      el.setAttribute('data-saved-href', el.href);
+      el.addEventListener('click', handleLinkClick);
+    } else {
+      el.removeEventListener('click', handleLinkClick);
+    }
+  });
+}
+
+function handleLinkClick(e) {
+  if (!editing) return;
+  e.preventDefault();
+  e.stopPropagation();
+  openLinkPopup(this);
+}
+
+function openLinkPopup(el) {
+  currentLinkEl = el;
+  document.getElementById('lp-url').value = el.getAttribute('data-saved-href') || el.href || '';
+  document.getElementById('lp-label').value = el.getAttribute('data-link-label') || el.textContent.trim();
+  var rect = el.getBoundingClientRect();
+  var popup = document.getElementById('link-popup');
+  popup.style.top = (rect.bottom + window.scrollY + 8) + 'px';
+  popup.style.left = Math.max(10, Math.min(rect.left, window.innerWidth - 310)) + 'px';
+  popup.style.display = 'block';
+  document.getElementById('lp-url').focus();
+  document.getElementById('lp-url').select();
+}
+
+function saveLink() {
+  if (!currentLinkEl) return;
+  var url = document.getElementById('lp-url').value.trim();
+  var label = document.getElementById('lp-label').value.trim();
+  if (url) {
+    currentLinkEl.href = url;
+    currentLinkEl.setAttribute('data-saved-href', url);
+  }
+  if (label) currentLinkEl.setAttribute('data-link-label', label);
+  closeLinkPopup();
+}
+
+function closeLinkPopup() {
+  document.getElementById('link-popup').style.display = 'none';
+  currentLinkEl = null;
+}
+
+document.addEventListener('click', function(e) {
+  var popup = document.getElementById('link-popup');
+  if (popup.style.display === 'block' && !popup.contains(e.target)) {
+    closeLinkPopup();
+  }
+});
+
+document.getElementById('lp-url').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') saveLink();
+});
+
+function getCleanHTML() {
+  var clone = document.documentElement.cloneNode(true);
+  clone.querySelectorAll('[data-edit="true"]').forEach(function(el) {
+    el.removeAttribute('contenteditable');
+  });
+  clone.querySelectorAll('[data-saved-href]').forEach(function(el) {
+    el.removeAttribute('data-saved-href');
+  });
+  var toRemove = ['#edit-bar', '#toggle-edit', '#link-popup'];
+  toRemove.forEach(function(sel) {
+    var el = clone.querySelector(sel);
+    if (el) el.remove();
+  });
+  clone.querySelector('body').classList.remove('editing');
+  clone.querySelectorAll('script').forEach(function(s) { s.remove(); });
+  return '<!DOCTYPE html>\n' + clone.outerHTML;
+}
+
+function downloadHTML() {
+  var blob = new Blob([getCleanHTML()], { type: 'text/html' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'sanjana-linkinbio.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function copyHTML() {
+  navigator.clipboard.writeText(getCleanHTML()).then(function() {
+    var btn = document.querySelector('.eb-btn.ghost');
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 1500);
+  });
+}
+</script>
+</body>
+</html>
